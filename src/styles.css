@@ -13,6 +13,12 @@ body {
     margin-bottom: 20%;
 }
 
+img {
+    padding: 3% 3% 3% 8%;
+    height: 11.5rem;
+    width: 100%;
+}
+
 h1, h2 {
     text-align: center;
 }
