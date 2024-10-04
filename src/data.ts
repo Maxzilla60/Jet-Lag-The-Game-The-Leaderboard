@@ -9,13 +9,13 @@ export type MainPlayer = typeof MAIN_PLAYERS[number];
 export type GuestPlayer = typeof GUEST_PLAYERS[number];
 export type Player = MainPlayer | GuestPlayer;
 
-export interface JetLagSeason {
+export interface HardcodedJetLagSeason {
   seasonName: string;
   winners: Player[];
 }
 
 // From: https://en.wikipedia.org/wiki/Jet_Lag:_The_Game#Seasons
-export const hardcodedJetLagSeasons: JetLagSeason[] = [
+export const hardcodedJetLagSeasons: HardcodedJetLagSeason[] = [
   {
     seasonName: 'Connect 4',
     winners: ['Sam Denby', 'Brian McManus'],
