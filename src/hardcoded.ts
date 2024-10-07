@@ -1,21 +1,22 @@
-export const MAIN_PLAYERS: string[] = ['Sam Denby', 'Adam Chase', 'Ben Doyle'] as const;
-export const GUEST_PLAYERS: string[] = [
+import { JetLagSeason, MAIN_PLAYERS } from './shared.ts';
+
+const GUEST_PLAYERS: string[] = [
   'Brian McManus',
-  'Toby Hendy',
   'Michelle Khare',
+  'Toby Hendy',
 ] as const;
 
-export type MainPlayer = typeof MAIN_PLAYERS[number];
-export type GuestPlayer = typeof GUEST_PLAYERS[number];
-export type Player = MainPlayer | GuestPlayer;
+type MainPlayer = typeof MAIN_PLAYERS[number];
+type GuestPlayer = typeof GUEST_PLAYERS[number];
+type Player = MainPlayer | GuestPlayer;
 
-export interface HardcodedJetLagSeason {
+interface HardcodedJetLagSeason {
   seasonName: string;
   winners: Player[];
 }
 
 // From: https://en.wikipedia.org/wiki/Jet_Lag:_The_Game#Seasons
-export const hardcodedJetLagSeasons: HardcodedJetLagSeason[] = [
+const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
   {
     seasonName: 'Connect 4',
     winners: ['Sam Denby', 'Brian McManus'],
@@ -61,3 +62,8 @@ export const hardcodedJetLagSeasons: HardcodedJetLagSeason[] = [
     winners: ['Sam Denby'],
   },
 ];
+
+export const hardcodedJetLagSeasons: JetLagSeason[] = unmappedJetLagSeasons.map((season, index) => ({
+  seasonNumber: index + 1,
+  ...season,
+}));

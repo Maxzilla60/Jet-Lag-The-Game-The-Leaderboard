@@ -1,10 +1,5 @@
 import { values } from 'lodash';
-
-export interface ApiJetLagSeason {
-  seasonNumber: number;
-  seasonName: string;
-  winners: string[];
-}
+import { JetLagSeason } from './shared.ts';
 
 interface TableRow {
   Season: string;
@@ -12,7 +7,7 @@ interface TableRow {
   'Winner(s)': string;
 }
 
-export async function fetchSeasonsData(): Promise<ApiJetLagSeason[]> {
+export async function fetchSeasonsData(): Promise<JetLagSeason[]> {
   const seasonsTable: TableRow[] = await fetch('https://www.wikitable2json.com/api/Jet_Lag:_The_Game?table=1&keyRows=2')
     .then(response => response.json())
     .then(json => {
