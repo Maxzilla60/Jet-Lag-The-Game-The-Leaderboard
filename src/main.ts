@@ -33,40 +33,13 @@ function setDataInfo(content: Hole): void {
 }
 
 function renderTables(seasons: JetLagSeason[]) {
-  const seasonsElement = document.getElementById('seasons-table')!;
   const leaderboardElement = document.getElementById('leaderboard-table')!;
-  seasonsElement.innerHTML = '';
-  seasonsElement.appendChild(createSeasonsTable(seasons));
   leaderboardElement.innerHTML = '';
   leaderboardElement.appendChild(createLeaderboardTable(seasons));
-}
 
-function createSeasonsTable(seasons: JetLagSeason[]): Node {
-  return html`
-	  <table>
-		  <thead>
-		  <tr>
-			  <th>Season</th>
-			  <th>Title</th>
-			  <th>Winners</th>
-		  </tr>
-		  </thead>
-
-		  <tbody>
-		  ${seasons.map((season, index) => seasonTableRow(index + 1, season))}
-		  </tbody>
-	  </table>
-  `.toDOM();
-}
-
-function seasonTableRow(seasonNumber: number, season: JetLagSeason): Hole {
-  return html`
-	  <tr>
-		  <td>${seasonNumber}</td>
-		  <td>${season.seasonName}</td>
-		  <td>${season.winners.join(' & ')}</td>
-	  </tr>
-  `;
+  const seasonsElement = document.getElementById('seasons-table')!;
+  seasonsElement.innerHTML = '';
+  seasonsElement.appendChild(createSeasonsTable(seasons));
 }
 
 function createLeaderboardTable(seasons: JetLagSeason[]): Node {
@@ -103,6 +76,34 @@ function leaderboardTableRow(rank: number, winner: { name: string, winCount: num
 		  <td>${mapRankToEmoji(rank)}</td>
 		  <td>${winner.name}</td>
 		  <td>${winner.winCount}</td>
+	  </tr>
+  `;
+}
+
+function createSeasonsTable(seasons: JetLagSeason[]): Node {
+  return html`
+	  <table>
+		  <thead>
+		  <tr>
+			  <th>Season</th>
+			  <th>Title</th>
+			  <th>Winners</th>
+		  </tr>
+		  </thead>
+
+		  <tbody>
+		  ${seasons.map((season, index) => seasonTableRow(index + 1, season))}
+		  </tbody>
+	  </table>
+  `.toDOM();
+}
+
+function seasonTableRow(seasonNumber: number, season: JetLagSeason): Hole {
+  return html`
+	  <tr>
+		  <td>${seasonNumber}</td>
+		  <td>${season.seasonName}</td>
+		  <td>${season.winners.join(' & ')}</td>
 	  </tr>
   `;
 }
