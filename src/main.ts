@@ -4,6 +4,7 @@ import { renderLeaderBoardTable } from './render/leaderboard-table.ts';
 import { hardcodedJetLagSeasons } from './data/hardcoded.ts';
 import { fetchSeasonsData } from './data/via-api.ts';
 import { renderSeasonsTable } from './render/seasons-table.ts';
+import { renderSimpleLeaderBoardTable } from './render/simple-leaderboard-table.ts';
 
 (async () => {
   renderTables(hardcodedJetLagSeasons);
@@ -31,6 +32,7 @@ import { renderSeasonsTable } from './render/seasons-table.ts';
 
 function renderTables(seasons: JetLagSeason[]) {
   renderLeaderBoardTable(seasons);
+  renderSimpleLeaderBoardTable(seasons);
   renderSeasonsTable(seasons);
 }
 
