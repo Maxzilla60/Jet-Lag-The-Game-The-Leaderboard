@@ -1,5 +1,5 @@
 import { Hole, html } from 'uhtml';
-import { HardcodedJetLagSeason, hardcodedJetLagSeasons } from './data.ts';
+import { HardcodedJetLagSeason, hardcodedJetLagSeasons } from './hardcoded.ts';
 import { countBy, entries } from 'lodash';
 import { ApiJetLagSeason, fetchSeasonsData } from './via-api.ts';
 
