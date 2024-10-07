@@ -7,6 +7,7 @@
     --b-bg-1: #263343;
     --b-bg-2: #192A3E;
     --b-link: var(--two);
+    --b-line: black;
 }
 
 body {
@@ -69,10 +70,6 @@ a:hover {
 
 table {
     margin-bottom: 0;
-}
-
-tr {
-    border-bottom: unset;
 }
 
 tr:not(:last-child) {
