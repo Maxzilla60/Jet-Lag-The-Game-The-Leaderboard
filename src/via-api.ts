@@ -1,9 +1,10 @@
 import { values } from 'lodash';
-import { JetLagSeason } from './shared.ts';
+import { JetLagSeason, MAIN_PLAYERS } from './shared.ts';
 
 interface TableRow {
   Season: string;
   Title: string;
+  Guest: string;
   'Winner(s)': string;
 }
 
@@ -27,6 +28,7 @@ export async function fetchSeasonsData(): Promise<JetLagSeason[]> {
       seasonNumber: Number(row.Season),
       seasonName: row.Title,
       winners: row['Winner(s)'].split(' & '),
+      players: row.Guest === '—' ? [] : [...MAIN_PLAYERS, row.Guest],
     }))
     .sort((a, b) => a.seasonNumber - b.seasonNumber);
 }

@@ -3,5 +3,6 @@ export const MAIN_PLAYERS: string[] = ['Sam Denby', 'Adam Chase', 'Ben Doyle'] a
 export interface JetLagSeason {
   seasonNumber: number;
   seasonName: string;
+  players: string[];
   winners: string[];
 }

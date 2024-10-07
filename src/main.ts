@@ -1,6 +1,6 @@
 import { Hole, html } from 'uhtml';
 import { hardcodedJetLagSeasons } from './hardcoded.ts';
-import { countBy, entries } from 'lodash';
+import { uniq } from 'lodash';
 import { fetchSeasonsData } from './via-api.ts';
 import { JetLagSeason } from './shared.ts';
 
@@ -49,7 +49,7 @@ function createLeaderboardTable(seasons: JetLagSeason[]): Node {
 		  <tr>
 			  <th>Rank</th>
 			  <th>Name</th>
-			  <th>Wins</th>
+		  <th>Seasons Won / Seasons Played</th>
 		  </tr>
 		  </thead>
 		  <tbody>
@@ -59,23 +59,31 @@ function createLeaderboardTable(seasons: JetLagSeason[]): Node {
   `.toDOM();
 }
 
-function mapToLeaderboard(seasons: JetLagSeason[]): { name: string, winCount: number }[] {
-  const winners = seasons.flatMap(season => season.winners);
+function mapToLeaderboard(seasons: JetLagSeason[]): { name: string, seasonsWon: number, seasonsPlayed: number }[] {
+  const players = uniq(seasons.flatMap(season => season.players));
 
-  return entries(countBy(winners))
-    .map(([name, winCount]) => ({
-      name,
-      winCount,
-    }))
-    .sort((a, b) => b.winCount - a.winCount);
+  return players.map(name => {
+    const seasonsPlayed = seasons
+      .filter(season => season.players.includes(name))
+      .length;
+    const seasonsWon = seasons
+      .filter(season => season.winners.includes(name))
+      .length;
+    return { name, seasonsWon, seasonsPlayed };
+  })
+    .sort((a, b) => (b.seasonsWon / b.seasonsPlayed) - (a.seasonsWon / a.seasonsPlayed));
 }
 
-function leaderboardTableRow(rank: number, winner: { name: string, winCount: number }): Hole {
+function leaderboardTableRow(rank: number, winner: {
+  name: string,
+  seasonsWon: number,
+  seasonsPlayed: number
+}): Hole {
   return html`
 	  <tr>
 		  <td>${mapRankToEmoji(rank)}</td>
 		  <td>${winner.name}</td>
-		  <td>${winner.winCount}</td>
+		<td>${winner.seasonsWon} / ${winner.seasonsPlayed}</td>
 	  </tr>
   `;
 }
