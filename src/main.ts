@@ -36,12 +36,12 @@ function renderTables(seasons: JetLagSeason[]) {
   const seasonsElement = document.getElementById('seasons-table')!;
   const leaderboardElement = document.getElementById('leaderboard-table')!;
   seasonsElement.innerHTML = '';
-  seasonsElement.appendChild(createTable(seasons));
+  seasonsElement.appendChild(createSeasonsTable(seasons));
   leaderboardElement.innerHTML = '';
-  leaderboardElement.appendChild(createLeaderboard(seasons));
+  leaderboardElement.appendChild(createLeaderboardTable(seasons));
 }
 
-function createTable(seasons: JetLagSeason[]): Node {
+function createSeasonsTable(seasons: JetLagSeason[]): Node {
   return html`
 	  <table>
 		  <thead>
@@ -69,7 +69,7 @@ function seasonTableRow(seasonNumber: number, season: JetLagSeason): Hole {
   `;
 }
 
-function createLeaderboard(seasons: JetLagSeason[]): Node {
+function createLeaderboardTable(seasons: JetLagSeason[]): Node {
   return html`
 	  <table>
 		  <thead>
