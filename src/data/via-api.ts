@@ -1,5 +1,5 @@
 import { values } from 'lodash';
-import { JetLagSeason, MAIN_PLAYERS } from './shared.ts';
+import { JetLagSeason, MAIN_PLAYERS } from '../shared.ts';
 
 interface TableRow {
   Season: string;

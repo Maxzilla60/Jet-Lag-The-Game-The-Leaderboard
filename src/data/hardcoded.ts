@@ -1,4 +1,4 @@
-import { JetLagSeason, MAIN_PLAYERS } from './shared.ts';
+import { JetLagSeason, MAIN_PLAYERS } from '../shared.ts';
 
 const GUEST_PLAYERS: string[] = [
   'Brian McManus',
