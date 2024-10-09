@@ -1,4 +1,4 @@
-import { JetLagSeason, mapRankToEmoji } from '../shared.ts';
+import { JetLagSeason, mapRankToEmoji, renderPlayerName } from '../shared.ts';
 import { Hole, html } from 'uhtml';
 import { uniq } from 'lodash';
 
@@ -47,7 +47,7 @@ function leaderboardTableRow(rank: number, winner: SimpleLeaderBoardPlayer): Hol
   return html`
 	  <tr>
 		  <td>${mapRankToEmoji(rank)}</td>
-		  <td>${winner.name}</td>
+		<td>${renderPlayerName(winner.name)}</td>
 		  <td>${winner.seasonsWon}</td>
 	  </tr>
   `;

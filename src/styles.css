@@ -76,6 +76,10 @@ tr:not(:last-child) {
     border-bottom: solid 1px black;
 }
 
+.main-player {
+    font-weight: bold;
+}
+
 small {
     display: block;
     text-align: center;

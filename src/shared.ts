@@ -9,6 +9,10 @@ export interface JetLagSeason {
   winners: string[];
 }
 
+export function renderPlayerName(name: string): Hole {
+  return MAIN_PLAYERS.includes(name) ? html`<span class="main-player">${name}</span>` : html`${name}`;
+}
+
 export function mapRankToEmoji(rank: number): Hole | string {
   const rankString = '#' + rank;
   switch (rank) {
