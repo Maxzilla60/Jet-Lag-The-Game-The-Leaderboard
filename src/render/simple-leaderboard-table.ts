@@ -1,20 +1,20 @@
-import { JetLagSeason, mapRankToEmoji, renderPlayerName } from '../shared.ts';
-import { Hole, html } from 'uhtml';
 import { uniq } from 'lodash';
+import { Hole, html } from 'uhtml';
+import { JetLagSeason, mapRankToEmoji, renderPlayerName } from '../shared.ts';
 
 type SimpleLeaderBoardPlayer = {
-  name: string,
-  seasonsWon: number,
+	name: string,
+	seasonsWon: number,
 };
 
 export function renderSimpleLeaderBoardTable(seasons: JetLagSeason[]) {
-  const leaderboardElement = document.getElementById('simple-leaderboard-table')!;
-  leaderboardElement.innerHTML = '';
-  leaderboardElement.appendChild(createLeaderboardTable(seasons));
+	const leaderboardElement = document.getElementById('simple-leaderboard-table')!;
+	leaderboardElement.innerHTML = '';
+	leaderboardElement.appendChild(createLeaderboardTable(seasons));
 }
 
 function createLeaderboardTable(seasons: JetLagSeason[]): Node {
-  return html`
+	return html`
 	  <table>
 		  <thead>
 		  <tr>
@@ -31,24 +31,24 @@ function createLeaderboardTable(seasons: JetLagSeason[]): Node {
 }
 
 function mapToLeaderboard(seasons: JetLagSeason[]): SimpleLeaderBoardPlayer[] {
-  const players = uniq(seasons.flatMap(season => season.players));
+	const players = uniq(seasons.flatMap(season => season.players));
 
-  return players
-    .map(name => ({
-      name,
-      seasonsWon: seasons
-        .filter(season => season.winners.includes(name))
-        .length,
-    }))
-    .sort((a, b) => b.seasonsWon - a.seasonsWon);
+	return players
+		.map(name => ({
+			name,
+			seasonsWon: seasons
+				.filter(season => season.winners.includes(name))
+				.length,
+		}))
+		.sort((a, b) => b.seasonsWon - a.seasonsWon);
 }
 
 function leaderboardTableRow(rank: number, winner: SimpleLeaderBoardPlayer): Hole {
-  return html`
-	  <tr>
-		  <td>${mapRankToEmoji(rank)}</td>
-		<td>${renderPlayerName(winner.name)}</td>
-		  <td>${winner.seasonsWon}</td>
-	  </tr>
-  `;
+	return html`
+		<tr>
+			<td>${mapRankToEmoji(rank)}</td>
+			<td>${renderPlayerName(winner.name)}</td>
+			<td>${winner.seasonsWon}</td>
+		</tr>
+	`;
 }
