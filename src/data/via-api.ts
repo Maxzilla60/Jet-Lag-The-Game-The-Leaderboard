@@ -9,7 +9,7 @@ interface TableRow {
 }
 
 export async function fetchSeasonsData(): Promise<JetLagSeason[]> {
-	const seasonsTable: TableRow[] = await fetch('https://www.wikitable2json.com/api/Jet_Lag:_The_Game?table=1&keyRows=2')
+	const seasonsTable: TableRow[] = await fetch('https://www.wikitable2json.com/api/Jet_Lag:_The_Game?table=2&keyRows=2')
 		.then(response => response.json())
 		.then(json => {
 			if (!json || json.length === 0) {
