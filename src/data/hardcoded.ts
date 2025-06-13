@@ -6,6 +6,8 @@ const GUEST_PLAYERS: string[] = [
 	'Michelle Khare',
 	'Scotty Allen',
 	'Toby Hendy',
+	'Tom Scott',
+	'Amy Muller',
 ] as const;
 
 type MainPlayer = typeof MAIN_PLAYERS[number];
@@ -79,6 +81,16 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 		seasonName: 'Hide + Seek: Japan',
 		winners: ['Ben Doyle'],
 		players: [...MAIN_PLAYERS],
+	},
+	{
+		seasonName: 'Schengen Showdown',
+		winners: ['Adam Chase', 'Ben Doyle'],
+		players: [...MAIN_PLAYERS, 'Tom Scott'],
+	},
+	{
+		seasonName: 'Hide + Seek NYC',
+		winners: ['Sam Denby', 'Ben Doyle'],
+		players: [...MAIN_PLAYERS, 'Amy Muller'],
 	},
 ];
 
