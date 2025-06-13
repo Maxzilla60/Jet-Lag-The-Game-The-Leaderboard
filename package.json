@@ -4,16 +4,17 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"upgrade": "npx npm-check-updates -u & npm i"
 	},
 	"devDependencies": {
-		"@types/lodash": "^4.17.10",
+		"@types/lodash": "^4.17.17",
 		"lodash": "^4.17.21",
-		"typescript": "^5.5.3",
-		"uhtml": "^4.5.11",
-		"vite": "^6.0.3"
+		"typescript": "^5.8.3",
+		"uhtml": "^4.7.1",
+		"vite": "^6.3.5"
 	},
 	"optionalDependencies": {
-		"@rollup/rollup-linux-x64-gnu": "4.24.0"
+		"@rollup/rollup-linux-x64-gnu": "4.43.0"
 	}
 }
