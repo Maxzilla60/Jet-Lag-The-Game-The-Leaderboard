@@ -35,7 +35,7 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 	{
 		seasonName: 'Tag EUR It',
 		winners: ['Adam Chase'],
-		players: [...MAIN_PLAYERS],
+		players: MAIN_PLAYERS,
 	},
 	{
 		seasonName: 'Battle 4 America',
@@ -55,7 +55,7 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 	{
 		seasonName: 'Tag EUR It 2',
 		winners: ['Ben Doyle'],
-		players: [...MAIN_PLAYERS],
+		players: MAIN_PLAYERS,
 	},
 	{
 		seasonName: 'Arctic Escape',
@@ -65,7 +65,7 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 	{
 		seasonName: 'Hide + Seek',
 		winners: ['Adam Chase'],
-		players: [...MAIN_PLAYERS],
+		players: MAIN_PLAYERS,
 	},
 	{
 		seasonName: 'Au$tralia',
@@ -75,12 +75,12 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 	{
 		seasonName: 'Tag EUR It 3',
 		winners: ['Sam Denby'],
-		players: [...MAIN_PLAYERS],
+		players: MAIN_PLAYERS,
 	},
 	{
 		seasonName: 'Hide + Seek: Japan',
 		winners: ['Ben Doyle'],
-		players: [...MAIN_PLAYERS],
+		players: MAIN_PLAYERS,
 	},
 	{
 		seasonName: 'Schengen Showdown',

@@ -21,7 +21,7 @@ import { JetLagSeason } from './shared.ts';
 		renderTables(hardcodedJetLagSeasons);
 
 		setDataInfo(html`
-			Fetching data from the
+			⚠️ Fetching data from the
 			<a href="https://en.wikipedia.org/wiki/Jet_Lag:_The_Game#Seasons" target="_blank" rel="noreferrer noopener">Wikipedia page</a>
 			failed, fallback on hardcoded (possibly outdated) data
 		`);
