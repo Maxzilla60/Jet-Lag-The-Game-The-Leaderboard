@@ -4,12 +4,12 @@ import { JetLagSeason, MAIN_PLAYERS } from '../shared.ts';
 interface TableRow {
 	Season: string;
 	Title: string;
-	Guest: string;
+	'Guest(s)': string;
 	'Winner(s)': string;
 }
 
 export async function fetchSeasonsData(): Promise<JetLagSeason[]> {
-	const seasonsTable: TableRow[] = await fetch('https://www.wikitable2json.com/api/Jet_Lag:_The_Game?table=1&keyRows=2')
+	const seasonsTable: TableRow[] = await fetch('https://www.wikitable2json.com/api/Jet_Lag:_The_Game?table=0&keyRows=2')
 		.then(response => response.json())
 		.then(json => {
 			if (!json || json.length === 0) {
@@ -26,9 +26,20 @@ export async function fetchSeasonsData(): Promise<JetLagSeason[]> {
 		.filter(row => !values(row).some(cell => cell.includes('TBA'))) // Filter out unfinished seasons
 		.map(row => ({
 			seasonNumber: Number(row.Season),
-			seasonName: row.Title,
+			seasonName: row.Title.replace(/\[[a-z]]$/g, ''),
 			winners: row['Winner(s)'].split(' & '),
-			players: row.Guest === '—' ? [] : [...MAIN_PLAYERS, row.Guest],
+			players: [...MAIN_PLAYERS, ...parseGuests(row['Guest(s)'])],
 		}))
 		.sort((a, b) => a.seasonNumber - b.seasonNumber);
+}
+
+// Split on ', ' and ', & ' and ' & '
+function parseGuests(guests: string): string[] {
+	if (guests === '—') {
+		return [];
+	}
+
+	return guests
+		.split(/, & | & |, /)
+		.map(name => name.trim());
 }
