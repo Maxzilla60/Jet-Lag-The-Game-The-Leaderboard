@@ -102,6 +102,11 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 		winners: ['Adam Chase', 'Michelle Khare'],
 		players: [...MAIN_PLAYERS, 'Toby Hendy', 'Michelle Khare', 'Brian McManus'],
 	},
+	{
+		seasonName: 'Hide + Seek UK',
+		winners: ['Adam Chase'],
+		players: MAIN_PLAYERS,
+	},
 ];
 
 export const hardcodedJetLagSeasons: JetLagSeason[] = unmappedJetLagSeasons.map((season, index) => ({
