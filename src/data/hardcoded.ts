@@ -8,6 +8,7 @@ const GUEST_PLAYERS: string[] = [
 	'Toby Hendy',
 	'Tom Scott',
 	'Amy Muller',
+	'Michael Downie',
 ] as const;
 
 type MainPlayer = typeof MAIN_PLAYERS[number];
@@ -106,6 +107,11 @@ const unmappedJetLagSeasons: HardcodedJetLagSeason[] = [
 		seasonName: 'Hide + Seek UK',
 		winners: ['Adam Chase'],
 		players: MAIN_PLAYERS,
+	},
+	{
+		seasonName: 'Taiwan: Rail Rush',
+		winners: ['Adam Chase', 'Ben Doyle'],
+		players: [...MAIN_PLAYERS, 'Michael Downie'],
 	},
 ];
 
