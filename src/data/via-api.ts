@@ -55,5 +55,6 @@ function parseGuests(guests: string): string[] {
 
 	return guests
 		.split(/, & | & |, |\n/)
-		.map(name => name.trim());
+		.map(name => name.replace(/\s+/g, ' ')) // Replace U+00A0 with regular whitespace
+		.map(name => name.trim())
 }
