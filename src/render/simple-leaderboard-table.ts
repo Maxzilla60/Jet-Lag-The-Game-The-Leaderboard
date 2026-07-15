@@ -37,7 +37,7 @@ function mapToLeaderboard(seasons: JetLagSeason[]): SimpleLeaderBoardPlayer[] {
 		.map(name => ({
 			name,
 			seasonsWon: seasons
-				.filter(season => season.winners.includes(name))
+				.filter(({ winners }) => winners.includes(name))
 				.length,
 		}))
 		.sort((a, b) => b.seasonsWon - a.seasonsWon);

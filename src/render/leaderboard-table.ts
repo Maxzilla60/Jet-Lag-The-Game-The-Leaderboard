@@ -40,13 +40,13 @@ function mapToLeaderboard(seasons: JetLagSeason[]): LeaderBoardPlayer[] {
 		.map(name => ({
 			name,
 			seasonsWon: seasons
-				.filter(season => season.winners.includes(name))
+				.filter(({ winners }) => winners.includes(name))
 				.length,
 			seasonsPlayed: seasons
-				.filter(season => season.players.includes(name))
+				.filter(({ players }) => players.includes(name))
 				.length,
 			soloSeasonsWon: seasons
-				.filter(season => season.winners.includes(name) && season.winners.length === 1)
+				.filter(({ winners }) => winners.length === 1 && winners.includes(name))
 				.length,
 		}))
 		.sort((a, b) => {
