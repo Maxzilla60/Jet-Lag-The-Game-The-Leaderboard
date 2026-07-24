@@ -47,14 +47,13 @@ function mapToJetLagSeason(row: WikiTableRow): JetLagSeason {
 	};
 }
 
-// Split on ', ' and ', & ', ' & ', and '\n'
 function parseGuests(guests: string): string[] {
 	if (guests === '—') {
 		return [];
 	}
 
 	return guests
-		.split(/, & | & |, |\n/)
+		.split(/, & | & |, |\n& |\n/)
 		.map(name => name.replace(/\s+/g, ' ')) // Replace U+00A0 with regular whitespace
 		.map(name => name.trim())
 }
